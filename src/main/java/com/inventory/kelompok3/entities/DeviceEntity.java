@@ -38,6 +38,9 @@ public class DeviceEntity {
     @Column(columnDefinition = "float(6,2)")
     private Float memoryCap;
   
+    @Column(length = 100)
+    private String processor;
+
     @Column
     private Integer cores;
   

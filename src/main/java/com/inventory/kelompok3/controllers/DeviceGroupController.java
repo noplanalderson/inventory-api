@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 import com.inventory.kelompok3.dto.reponse.BaseResponse;
@@ -30,24 +32,28 @@ public class DeviceGroupController {
     @Autowired
     private DeviceGroupImpl devGroupService;
 
+    @Operation(security = @SecurityRequirement(name = "restapi_simdc"))
     @PostMapping
     @ApiOperation(value = "Simpan Grup", response = BaseResponse.class)
     public BaseResponse save(@ModelAttribute DeviceGroupEntity request) {
         return devGroupService.save(request);
     }
 
+    @Operation(security = @SecurityRequirement(name = "restapi_simdc"))
     @GetMapping
     @ApiOperation(value = "Semua Grup", response = BaseResponse.class)
     public BaseResponse findAll() {
         return devGroupService.findAll();
     }
 
+    @Operation(security = @SecurityRequirement(name = "restapi_simdc"))
     @GetMapping("/{id}")
     @ApiOperation(value = "Grup Berdasarkan ID", response = BaseResponse.class)
     public BaseResponse findById(@PathVariable("id") Long id) {
         return devGroupService.findById(id);
     }
 
+    @Operation(security = @SecurityRequirement(name = "restapi_simdc"))
     @PutMapping("/{id}")
     @ApiOperation(value = "Update Grup Device", response = BaseResponse.class)
     public BaseResponse update(@PathVariable("id") Long groupId, @ModelAttribute DeviceGroupEntity request) {
@@ -55,6 +61,7 @@ public class DeviceGroupController {
         return devGroupService.update(request);
     }
 
+    @Operation(security = @SecurityRequirement(name = "restapi_simdc"))
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Hapus Grup Device", response = BaseResponse.class)
     public BaseResponse deleteById(@PathVariable("id") Long id) {

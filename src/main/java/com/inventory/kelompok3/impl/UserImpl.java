@@ -104,7 +104,7 @@ public class UserImpl implements UserService {
     }
 
     public BaseResponse findByUsername(String userName) {
-        String query = "SELECT * FROM tb_user WHERE user_name = :userName AND userStatus = '_1'";
+        String query = "SELECT * FROM tb_user WHERE user_name = :userName AND user_status = '_1'";
         Query nativeQuery = entityManager.createNativeQuery(query, UserEntity.class);
         nativeQuery.setParameter("userName", userName);
         try {

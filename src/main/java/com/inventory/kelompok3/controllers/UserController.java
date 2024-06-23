@@ -67,4 +67,11 @@ public class UserController {
         return userService.deleteById(id);
     }
 
+    @Operation(security = @SecurityRequirement(name = "restapi_simdc"))
+    @GetMapping("/login/{username}")
+    @ApiOperation(value = "API untuk Login Client", response = BaseResponse.class)
+    public BaseResponse findDeviceByGroup(@PathVariable("username") String userName)
+    {
+        return userService.findByUsername(userName);
+    }
 }

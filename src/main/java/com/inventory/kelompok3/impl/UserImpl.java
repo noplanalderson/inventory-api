@@ -15,6 +15,7 @@ import com.inventory.kelompok3.services.UserService;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 @Service
 public class UserImpl implements UserService {
@@ -100,5 +101,23 @@ public class UserImpl implements UserService {
             logger.error(this.msg);
         }
         return new BaseResponse(this.status, this.msg, null);
+    }
+
+    public BaseResponse findByUsername(String userName) {
+        String query = "SELECT * FROM tb_user WHERE user_name = :userName";
+        Query nativeQuery = entityManager.createNativeQuery(query, UserEntity.class);
+        nativeQuery.setParameter("userName", userName);
+        try {
+            @SuppressWarnings("unchecked")
+            List<UserEntity> users = nativeQuery.getResultList();
+            this.status = true;
+            this.msg = "User ditemukan!";
+            this.returnObject = users;
+            logger.info(this.msg);
+        } catch (Exception e) {
+            this.msg = "Tidak ada user. "+toString();
+            logger.error(this.msg);
+        }
+        return new BaseResponse(this.status, this.msg, this.returnObject);
     }
 }

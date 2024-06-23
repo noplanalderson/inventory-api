@@ -108,14 +108,14 @@ public class UserImpl implements UserService {
         Query nativeQuery = entityManager.createNativeQuery(query, UserEntity.class);
         nativeQuery.setParameter("userName", userName);
         try {
-            @SuppressWarnings("unchecked")
-            List<UserEntity> users = nativeQuery.getResultList();
+            Object users = nativeQuery.getSingleResult();
             this.status = true;
-            this.msg = "User ditemukan!";
+            this.msg = "Username ditemukan!";
             this.returnObject = users;
             logger.info(this.msg);
         } catch (Exception e) {
-            this.msg = "Tidak ada user. "+toString();
+            this.returnObject = null;
+            this.msg = "Username tidak terdaftar. "+toString();
             logger.error(this.msg);
         }
         return new BaseResponse(this.status, this.msg, this.returnObject);

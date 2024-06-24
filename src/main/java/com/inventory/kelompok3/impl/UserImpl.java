@@ -43,6 +43,7 @@ public class UserImpl implements UserService {
             this.returnObject = newData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan user! "+e.toString();
             logger.error(this.msg);
         }
@@ -67,6 +68,7 @@ public class UserImpl implements UserService {
         } 
         else
         {
+            this.status = false;
             this.msg = "User tidak ditemukan!";
             logger.error(this.msg);
         }
@@ -83,6 +85,7 @@ public class UserImpl implements UserService {
             this.returnObject = updateData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan user! "+e.toString();
             logger.error(this.msg);
         }
@@ -97,6 +100,7 @@ public class UserImpl implements UserService {
             this.status = true;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menghapus user! "+e.toString();
             logger.error(this.msg);
         }
@@ -114,6 +118,7 @@ public class UserImpl implements UserService {
             this.returnObject = users;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.returnObject = null;
             this.msg = "Username tidak terdaftar. "+toString();
             logger.error(this.msg);

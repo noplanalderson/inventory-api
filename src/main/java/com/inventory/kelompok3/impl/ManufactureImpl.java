@@ -42,6 +42,7 @@ public class ManufactureImpl implements ManufactureService {
             this.returnObject = newData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan manufaktur! "+e.toString();
             logger.error(this.msg);
         }
@@ -66,6 +67,7 @@ public class ManufactureImpl implements ManufactureService {
         } 
         else
         {
+            this.status = false;
             this.msg = "Manufaktur tidak ditemukan!";
             logger.error(this.msg);
         }
@@ -82,6 +84,7 @@ public class ManufactureImpl implements ManufactureService {
             this.returnObject = updateData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan manufaktur! "+e.toString();
             logger.error(this.msg);
         }
@@ -96,6 +99,7 @@ public class ManufactureImpl implements ManufactureService {
             this.status = true;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menghapus manufaktur! "+e.toString();
             logger.error(this.msg);
         }

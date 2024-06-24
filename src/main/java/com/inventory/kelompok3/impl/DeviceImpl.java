@@ -42,6 +42,7 @@ public class DeviceImpl implements DeviceService {
             this.returnObject = newData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan device! "+e.toString();
             logger.error(this.msg);
         }
@@ -66,6 +67,7 @@ public class DeviceImpl implements DeviceService {
         } 
         else
         {
+            this.status = false;
             this.msg = "Device tidak ditemukan!";
             logger.error(this.msg);
         }
@@ -82,6 +84,7 @@ public class DeviceImpl implements DeviceService {
             this.returnObject = updateData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan device! "+e.toString();
             logger.error(this.msg);
         }
@@ -96,6 +99,7 @@ public class DeviceImpl implements DeviceService {
             this.status = true;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menghapus device! "+e.toString();
             logger.error(this.msg);
         }
@@ -115,6 +119,7 @@ public class DeviceImpl implements DeviceService {
             this.returnObject = devices;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Tidak ada device. "+toString();
             logger.error(this.msg);
         }

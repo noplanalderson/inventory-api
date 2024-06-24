@@ -42,6 +42,7 @@ public class DeviceGroupImpl implements DeviceGroupService {
             this.returnObject = newData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan grup! "+e.toString();
             logger.error(this.msg);
         }
@@ -66,6 +67,7 @@ public class DeviceGroupImpl implements DeviceGroupService {
         } 
         else
         {
+            this.status = false;
             this.msg = "Grup device tidak ada!";
             logger.error(this.msg);
         }
@@ -82,6 +84,7 @@ public class DeviceGroupImpl implements DeviceGroupService {
             this.returnObject = updateData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan grup! "+e.toString();
             logger.error(this.msg);
         }
@@ -96,6 +99,7 @@ public class DeviceGroupImpl implements DeviceGroupService {
             this.status = true;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menghapus grup! "+e.toString();
             logger.error(this.msg);
         }

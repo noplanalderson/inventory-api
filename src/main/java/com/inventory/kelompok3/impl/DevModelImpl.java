@@ -41,6 +41,7 @@ public class DevModelImpl implements DevModelService {
             this.returnObject = newData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan model device! "+e.toString();
             logger.error(this.msg);
         }
@@ -65,6 +66,7 @@ public class DevModelImpl implements DevModelService {
         } 
         else
         {
+            this.status = false;
             this.msg = "Model device tidak ditemukan!";
             logger.error(this.msg);
         }
@@ -81,6 +83,7 @@ public class DevModelImpl implements DevModelService {
             this.returnObject = updateData;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menyimpan model device! "+e.toString();
             logger.error(this.msg);
         }
@@ -95,6 +98,7 @@ public class DevModelImpl implements DevModelService {
             this.status = true;
             logger.info(this.msg);
         } catch (Exception e) {
+            this.status = false;
             this.msg = "Gagal menghapus model device! "+e.toString();
             logger.error(this.msg);
         }
